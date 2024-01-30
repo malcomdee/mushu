@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
+    <link rel="stylesheet" href="pagina.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <title>Document</title>
+</head>
+<body class="bg-secondary">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container-fluid">
+        <!-- icono o nombre -->
+        <a class="navbar-brand" href="#">
+            <i class="bi bi-bezier2"></i>
+          <span class="text-warning">Malcom</span>
+        </a>
+
+            
+        <!-- boton del menu -->
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+          <!-- elementos del menu colapsable -->
+
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="galeria.html">Galeria</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="formulario.html">Formulario</a>
+              </li>
+    
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Calculos
+                </a>
+  
+                <ul class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="calculadora.html">Calculadora</a></li>
+                  <li><a class="dropdown-item" href="formedad.html">Formulario edad</a><li>   
+                </ul>
+              </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Sobre mi
+              </a>
+
+              <ul class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="seccion1.html">Seccion 1</a></li>
+                <li><a class="dropdown-item" href="seccion2.html">Seccion 2</a><li>   
+                <li><a class="dropdown-item" href="seccion3.html">Seccion 3</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <hr class="d-md-none text-white-50">
+
+           <!-- enlaces redes sociales -->
+
+           <ul class="navbar-nav  flex-row flex-wrap text-light">
+
+            <li class="nav-item col-6 col-md-auto p-3">
+             <a href="https://instagram.com/br0wed_?igshid=NGVhN2U2NjQ0Yg==" style="color: white; text-decoration: none;">
+                 <i class="bi bi-instagram"></i>
+                 <small class="d-md-none ms-2">Instagram</small>  
+             </a>
+             </li>
+ 
+             <li class="nav-item col-6 col-md-auto p-3">
+                 <a href="https://github.com/Maalcom/intento" style="color: white; text-decoration: none;">
+               <i class="bi bi-github"></i>
+               <small class="d-md-none ms-2">GitHub</small> 
+             </a>
+             </li>
+ 
+             <li class="nav-item col-6 col-md-auto p-3">
+                 <a href="https://api.whatsapp.com/send?phone=56954119146&text=" style="color: white; text-decoration: none;">
+               <i class="bi bi-whatsapp"></i>
+               <small class="d-md-none ms-2">WhatsApp</small>
+             </a>
+             </li>
+ 
+           </ul>
+          
+          
+          
+        </div>
+     
+        </div>  
+      </nav>
+      <div class="container mt-5">
+        <h1 class="text-center">Calculadora</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="num1">Número 1:</label>
+                    <input type="number" class="form-control" id="num1">
+                </div>
+                <div class="form-group">
+                    <label for="num2">Número 2:</label>
+                    <input type="number" class="form-control" id="num2">
+                </div>
+                <div class="form-group">
+                    <label for="operation">Operación:</label>
+                    <select class="form-control" id="operation">
+                        <option value="add">Sumar</option>
+                        <option value="subtract">Restar</option>
+                        <option value="multiply">Multiplicar</option>
+                        <option value="divide">Dividir</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary mt-3" id="calculate">Calcular</button>
+                <div class="mt-3">
+                    <h5>Resultado:</h5>
+                    <p id="result">-</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        document.getElementById('calculate').addEventListener('click', function () {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const operation = document.getElementById('operation').value;
+            let result;
+
+            switch (operation) {
+                case 'add':
+                    result = num1 + num2;
+                    break;
+                case 'subtract':
+                    result = num1 - num2;
+                    break;
+                case 'multiply':
+                    result = num1 * num2;
+                    break;
+                case 'divide':
+                    if (num2 !== 0) {
+                        result = num1 / num2;
+                    } else {
+                        result = 'Error: División por cero';
+                    }
+                    break;
+                default:
+                    result = 'Operación no válida';
+                    break;
+            }
+
+            document.getElementById('result').textContent = result;
+        });
+    </script>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+private async void OnCounterClicked(object sender, EventArgs e)
+{
+
+        try
+        {
+            var photoFile = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+            {
+                SaveToAlbum = true,
+                Name = "ShaikMuneerNihal-" + DateTime.UtcNow.ToString("yyMMdd-HHmmss-ffff") + ".jpg",
+                DefaultCamera = CameraDevice.Front,
+                CustomPhotoSize = 50,
+                MaxWidthHeight = 100,
+                AllowCropping = true
+            });
+        }
+        catch (NotSupportedException ex)
+        {
+            await DisplayAlert("App name or some title here", "No camera device found.\n\nUnable to take photos.", "OK");
+        }
+        catch (Exception ex)
+        {
+            // catch other errors here.  
+        }
+
+}
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp2.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Image
+                Source="dotnet_bot.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Hello, World!"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Welcome to .NET Multi-platform App UI"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="CounterBtn"
+                Text="Click me"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
+
+<div className="card hover-effect" style={{margin: "0 10px", position: "relative", maxWidth: "calc(33.33% - 20px)", border: "none", height: "200px"}}>
+  <a href={Informaticapdf} target="_blank" rel="noopener noreferrer" download="MallaInformatica2016.pdf" style={{height: "100%", width: "100%", textDecoration:"none", display: "block", position: "relative"}}>
+      <img src={Informatica} className="card-img" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+      <div  className="card-overlay d-flex flex-column justify-content-center align-items-center position-absolute top-0 start-0" style={{ backgroundColor: "rgba(0, 0, 0, 0.4)",height: "100%", width: "100%", textAlign: "center" }}>
+          <h4 style={{  color: "white", margin: 0 }}> 
+              Ingeniería Civil Informática
+          </h4>
+      </div>
+  </a>
+</div>
+import React from "react";
+import { Fade } from "react-awesome-reveal";
+import Style from "../../styles/malla.css"
+import Energia from "../../resources/IngenieriaEnergia.jpeg"
+import Informatica from "../../resources/IngenieriaInformatica.jpeg"
+import Mineria from "../../resources/IngenieriaMinas.jpeg"
+import Bio from "../../resources/IngenieriaBio.jpeg"
+import Industrial from "../../resources/IngenieriaIndustrial.jpeg"
+import Mecanica from "../../resources/IngenieriaMecania.jpeg"
+import Obras from "../../resources/IngenieriaObrasCiviles.jpeg"
+import Obraspdf from "../../pdf/Obras/CIV2016.pdf"
+import Bioingenieriapdf from "../../pdf/Bioingieneria/BIO2016.pdf"
+import Energiapdf from "../../pdf/Energia/EYM2016.pdf"
+import Industrialpdf from "../../pdf/Industrial/IND2016.pdf"
+import Informaticapdf from "../../pdf/Informatica/INF2016.pdf"
+import Mecanicapdf from "../../pdf/Mecanica/MEC2016.pdf"
+import Mineriapdf from "../../pdf/Mineria/MIN2021.pdf"
+import { NavDropdown, Nav, Navbar, Button, Container, Row, Col } from "react-bootstrap";//importacion biblioteca react-bootstrap
+import { NavLink } from "react-router-dom";//importacion de navLink para rutas
+
+import Energia2016 from "./Syllabus/A2016/Energia/Energia2016";//importancion componente Energia2016
+import Energia2016S3 from "./Syllabus/A2016/Energia/Energia2016S3";//importancion componente Energia2016
+import Energia2016S5 from "./Syllabus/A2016/Energia/Energia2016S5";//importancion componente Energia2016
+import Energia2016S7 from "./Syllabus/A2016/Energia/Energia2016S7";//importancion componente Energia2016
+import Energia2016S9 from "./Syllabus/A2016/Energia/Energia2016S9";//importancion componente Energia2016
+
+import Bio2016 from "./Syllabus/A2016/Bio/Bio2016";//importancion componente Bio2016
+import Bio2016S3 from "./Syllabus/A2016/Bio/Bio2016S3";//importancion componente Bio2016
+import Bio2016S5 from "./Syllabus/A2016/Bio/Bio2016S5";//importancion componente Bio2016
+import Bio2016S7 from "./Syllabus/A2016/Bio/Bio2016S7";//importancion componente Bio2016
+import Bio2016S9 from "./Syllabus/A2016/Bio/Bio2016S9";//importancion componente Bio2016
+
+import Meca2016 from "./Syllabus/A2016/Meca/Meca2016";//importancion componente Meca2016
+import Meca2016S3 from "./Syllabus/A2016/Meca/Meca2016S3";//importancion componente Meca2016
+import Meca2016S5 from "./Syllabus/A2016/Meca/Meca2016S5";//importancion componente Meca2016
+import Meca2016S7 from "./Syllabus/A2016/Meca/Meca2016S7";//importancion componente Meca2016
+import Meca2016S9 from "./Syllabus/A2016/Meca/Meca2016S9";//importancion componente Meca2016
+
+import Info2016 from "./Syllabus/A2016/Info/Info2016";//importancion componente Info2016
+import Info2016S3 from "./Syllabus/A2016/Info/Info2016S3";//importancion componente Info2016
+import Info2016S5 from "./Syllabus/A2016/Info/Info2016S5";//importancion componente Info2016
+import Info2016S7 from "./Syllabus/A2016/Info/Info2016S7";//importancion componente Info2016
+import Info2016S9 from "./Syllabus/A2016/Info/Info2016S9";//importancion componente Info2016
+
+import Min2016 from "./Syllabus/A2016/Min/Min2016";//importancion componente Min2016
+import Min2016S3 from "./Syllabus/A2016/Min/Min2016S3";//importancion componente Min2016
+import Min2016S5 from "./Syllabus/A2016/Min/Min2016S5";//importancion componente Min2016
+import Min2016S7 from "./Syllabus/A2016/Min/Min2016S7";//importancion componente Min2016
+import Min2016S9 from "./Syllabus/A2016/Min/Min2016S9";//importancion componente Min2016
+
+import Obras2016 from "./Syllabus/A2016/Obras/Obras2016";//importancion componente Obras2016
+import Obras2016S3 from "./Syllabus/A2016/Obras/Obras2016S3";//importancion componente Obras2016
+import Obras2016S5 from "./Syllabus/A2016/Obras/Obras2016S5";//importancion componente Obras2016
+import Obras2016S7 from "./Syllabus/A2016/Obras/Obras2016S7";//importancion componente Obras2016
+import Obras2016S9 from "./Syllabus/A2016/Obras/Obras2016S9";//importancion componente Obras2016
+
+import Industrial2016 from "./Syllabus/A2016/Industrial/Industrial2016";//importancion componente Industrial2016
+import Industrial2016S3 from "./Syllabus/A2016/Industrial/Industrial2016S3";//importancion componente Industrial2016
+import Industrial2016S5 from "./Syllabus/A2016/Industrial/Industrial2016S5";//importancion componente Industrial2016
+import Industrial2016S7 from "./Syllabus/A2016/Industrial/Industrial2016S7";//importancion componente Industrial2016
+import Industrial2016S9 from "./Syllabus/A2016/Industrial/Industrial2016S9";//importancion componente Industrial2016
+
+import Energia2017 from "./Syllabus/A2017/Energia/Energia2017";//importancion componente Energia2017
+import Energia2017S3 from "./Syllabus/A2017/Energia/Energia2017S3";//importancion componente Energia2017
+import Energia2017S5 from "./Syllabus/A2017/Energia/Energia2017S5";//importancion componente Energia2017
+import Energia2017S7 from "./Syllabus/A2017/Energia/Energia2017S7";//importancion componente Energia2017
+import Energia2017S9 from "./Syllabus/A2017/Energia/Energia2017S9";//importancion componente Energia2017
+
+import Bio2017 from "./Syllabus/A2017/Bio/Bio2017";//importancion componente Bio2017
+import Bio2017S3 from "./Syllabus/A2017/Bio/Bio2017S3";//importancion componente Bio2017
+import Bio2017S5 from "./Syllabus/A2017/Bio/Bio2017S5";//importancion componente Bio2017
+import Bio2017S7 from "./Syllabus/A2017/Bio/Bio2017S7";//importancion componente Bio2017
+import Bio2017S9 from "./Syllabus/A2017/Bio/Bio2017S9";//importancion componente Bio2017
+
+import Meca2017 from "./Syllabus/A2017/Meca/Meca2017";//importancion componente Meca2017
+import Meca2017S3 from "./Syllabus/A2017/Meca/Meca2017S3";//importancion componente Meca2017
+import Meca2017S5 from "./Syllabus/A2017/Meca/Meca2017S5";//importancion componente Meca2017
+import Meca2017S7 from "./Syllabus/A2017/Meca/Meca2017S7";//importancion componente Meca2017
+import Meca2017S9 from "./Syllabus/A2017/Meca/Meca2017S9";//importancion componente Meca2017
+
+import Info2017 from "./Syllabus/A2017/Info/Info2017";//importancion componente Info2017
+import Info2017S3 from "./Syllabus/A2017/Info/Info2017S3";//importancion componente Info2017
+import Info2017S5 from "./Syllabus/A2017/Info/Info2017S5";//importancion componente Info2017
+import Info2017S7 from "./Syllabus/A2017/Info/Info2017S7";//importancion componente Info2017
+import Info2017S9 from "./Syllabus/A2017/Info/Info2017S9";//importancion componente Info2017
+
+import Min2017 from "./Syllabus/A2017/Min/Min2017";//importancion componente Min2017
+import Min2017S3 from "./Syllabus/A2017/Min/Min2017S3";//importancion componente Min2017
+import Min2017S5 from "./Syllabus/A2017/Min/Min2017S5";//importancion componente Min2017
+import Min2017S7 from "./Syllabus/A2017/Min/Min2017S7";//importancion componente Min2017
+import Min2017S9 from "./Syllabus/A2017/Min/Min2017S9";//importancion componente Min2017
+
+import Obras2017 from "./Syllabus/A2017/Obras/Obras2017";//importancion componente Obras2017
+import Obras2017S3 from "./Syllabus/A2017/Obras/Obras2017S3";//importancion componente Obras2017
+import Obras2017S5 from "./Syllabus/A2017/Obras/Obras2017S5";//importancion componente Obras2017
+import Obras2017S7 from "./Syllabus/A2017/Obras/Obras2017S7";//importancion componente Obras2017
+import Obras2017S9 from "./Syllabus/A2017/Obras/Obras2017S9";//importancion componente Obras2017
+
+import Industrial2017 from "./Syllabus/A2017/Industrial/Industrial2017";//importancion componente Industrial2017
+import Industrial2017S3 from "./Syllabus/A2017/Industrial/Industrial2017S3";//importancion componente Industrial2017
+import Industrial2017S5 from "./Syllabus/A2017/Industrial/Industrial2017S5";//importancion componente Industrial2017
+import Industrial2017S7 from "./Syllabus/A2017/Industrial/Industrial2017S7";//importancion componente Industrial2017
+import Industrial2017S9 from "./Syllabus/A2017/Industrial/Industrial2017S9";//importancion componente Industrial2017
+
+import Energia2018 from "./Syllabus/A2018/Energia/Energia2018";//importancion componente Energia2018
+import Energia2018S3 from "./Syllabus/A2018/Energia/Energia2018S3";//importancion componente Energia2018
+import Energia2018S5 from "./Syllabus/A2018/Energia/Energia2018S5";//importancion componente Energia2018
+import Energia2018S7 from "./Syllabus/A2018/Energia/Energia2018S7";//importancion componente Energia2018
+import Energia2018S9 from "./Syllabus/A2018/Energia/Energia2018S9";//importancion componente Energia2018
+
+import Bio2018 from "./Syllabus/A2018/Bio/Bio2018";//importancion componente Bio2018
+import Bio2018S3 from "./Syllabus/A2018/Bio/Bio2018S3";//importancion componente Bio2018
+import Bio2018S5 from "./Syllabus/A2018/Bio/Bio2018S5";//importancion componente Bio2018
+import Bio2018S7 from "./Syllabus/A2018/Bio/Bio2018S7";//importancion componente Bio2018
+import Bio2018S9 from "./Syllabus/A2018/Bio/Bio2018S9";//importancion componente Bio2018
+
+import Meca2018 from "./Syllabus/A2018/Meca/Meca2018";//importancion componente Meca2018
+import Meca2018S3 from "./Syllabus/A2018/Meca/Meca2018S3";//importancion componente Meca2018
+import Meca2018S5 from "./Syllabus/A2018/Meca/Meca2018S5";//importancion componente Meca2018
+import Meca2018S7 from "./Syllabus/A2018/Meca/Meca2018S7";//importancion componente Meca2018
+import Meca2018S9 from "./Syllabus/A2018/Meca/Meca2018S9";//importancion componente Meca2018
+
+import Info2018 from "./Syllabus/A2018/Info/Info2018";//importancion componente Info2018
+import Info2018S3 from "./Syllabus/A2018/Info/Info2018S3";//importancion componente Info2018
+import Info2018S5 from "./Syllabus/A2018/Info/Info2018S5";//importancion componente Info2018
+import Info2018S7 from "./Syllabus/A2018/Info/Info2018S7";//importancion componente Info2018
+import Info2018S9 from "./Syllabus/A2018/Info/Info2018S9";//importancion componente Info2018
+
+import Min2018 from "./Syllabus/A2018/Min/Min2018";//importancion componente Min2018
+import Min2018S3 from "./Syllabus/A2018/Min/Min2018S3";//importancion componente Min2018
+import Min2018S5 from "./Syllabus/A2018/Min/Min2018S5";//importancion componente Min2018
+import Min2018S7 from "./Syllabus/A2018/Min/Min2018S7";//importancion componente Min2018
+import Min2018S9 from "./Syllabus/A2018/Min/Min2018S9";//importancion componente Min2018
+
+import Obras2018 from "./Syllabus/A2018/Obras/Obras2018";//importancion componente Obras2018
+import Obras2018S3 from "./Syllabus/A2018/Obras/Obras2018S3";//importancion componente Obras2018
+import Obras2018S5 from "./Syllabus/A2018/Obras/Obras2018S5";//importancion componente Obras2018
+import Obras2018S7 from "./Syllabus/A2018/Obras/Obras2018S7";//importancion componente Obras2018
+import Obras2018S9 from "./Syllabus/A2018/Obras/Obras2018S9";//importancion componente Obras2018
+
+import Industrial2018 from "./Syllabus/A2018/Industrial/Industrial2018";//importancion componente Industrial2018
+import Industrial2018S3 from "./Syllabus/A2018/Industrial/Industrial2018S3";//importancion componente Industrial2018
+import Industrial2018S5 from "./Syllabus/A2018/Industrial/Industrial2018S5";//importancion componente Industrial2018
+import Industrial2018S7 from "./Syllabus/A2018/Industrial/Industrial2018S7";//importancion componente Industrial2018
+import Industrial2018S9 from "./Syllabus/A2018/Industrial/Industrial2018S9";//importancion componente Industrial2018
+
+import Energia2019 from "./Syllabus/A2019/Energia/Energia2019";//importancion componente Energia2019
+import Energia2019S3 from "./Syllabus/A2019/Energia/Energia2019S3";//importancion componente Energia2019
+import Energia2019S5 from "./Syllabus/A2019/Energia/Energia2019S5";//importancion componente Energia2019
+import Energia2019S7 from "./Syllabus/A2019/Energia/Energia2019S7";//importancion componente Energia2019
+import Energia2019S9 from "./Syllabus/A2019/Energia/Energia2019S9";//importancion componente Energia2019
+
+import Bio2019 from "./Syllabus/A2019/Bio/Bio2019";//importancion componente Bio2019
+import Bio2019S3 from "./Syllabus/A2019/Bio/Bio2019S3";//importancion componente Bio2019
+import Bio2019S5 from "./Syllabus/A2019/Bio/Bio2019S5";//importancion componente Bio2019
+import Bio2019S7 from "./Syllabus/A2019/Bio/Bio2019S7";//importancion componente Bio2019
+import Bio2019S9 from "./Syllabus/A2019/Bio/Bio2019S9";//importancion componente Bio2019
+
+import Meca2019 from "./Syllabus/A2019/Meca/Meca2019";//importancion componente Meca2019
+import Meca2019S3 from "./Syllabus/A2019/Meca/Meca2019S3";//importancion componente Meca2019
+import Meca2019S5 from "./Syllabus/A2019/Meca/Meca2019S5";//importancion componente Meca2019
+import Meca2019S7 from "./Syllabus/A2019/Meca/Meca2019S7";//importancion componente Meca2019
+import Meca2019S9 from "./Syllabus/A2019/Meca/Meca2019S9";//importancion componente Meca2019
+
+import Info2019 from "./Syllabus/A2019/Info/Info2019";//importancion componente Info2019
+import Info2019S3 from "./Syllabus/A2019/Info/Info2019S3";//importancion componente Info2019
+import Info2019S5 from "./Syllabus/A2019/Info/Info2019S5";//importancion componente Info2019
+import Info2019S7 from "./Syllabus/A2019/Info/Info2019S7";//importancion componente Info2019
+import Info2019S9 from "./Syllabus/A2019/Info/Info2019S9";//importancion componente Info2019
+
+import Min2019 from "./Syllabus/A2019/Min/Min2019";//importancion componente Min2019
+import Min2019S3 from "./Syllabus/A2019/Min/Min2019S3";//importancion componente Min2019
+import Min2019S5 from "./Syllabus/A2019/Min/Min2019S5";//importancion componente Min2019
+import Min2019S7 from "./Syllabus/A2019/Min/Min2019S7";//importancion componente Min2019
+import Min2019S9 from "./Syllabus/A2019/Min/Min2019S9";//importancion componente Min2019
+
+import Obras2019 from "./Syllabus/A2019/Obras/Obras2019";//importancion componente Obras2019
+import Obras2019S3 from "./Syllabus/A2019/Obras/Obras2019S3";//importancion componente Obras2019
+import Obras2019S5 from "./Syllabus/A2019/Obras/Obras2019S5";//importancion componente Obras2019
+import Obras2019S7 from "./Syllabus/A2019/Obras/Obras2019S7";//importancion componente Obras2019
+import Obras2019S9 from "./Syllabus/A2019/Obras/Obras2019S9";//importancion componente Obras2019
+
+import Industrial2019 from "./Syllabus/A2019/Industrial/Industrial2019";//importancion componente Industrial2019
+import Industrial2019S3 from "./Syllabus/A2019/Industrial/Industrial2019S3";//importancion componente Industrial2019
+import Industrial2019S5 from "./Syllabus/A2019/Industrial/Industrial2019S5";//importancion componente Industrial2019
+import Industrial2019S7 from "./Syllabus/A2019/Industrial/Industrial2019S7";//importancion componente Industrial2019
+import Industrial2019S9 from "./Syllabus/A2019/Industrial/Industrial2019S9";//importancion componente Industrial2019
+
+import Energia2020 from "./Syllabus/A2020/Energia/Energia2020";//importancion componente Energia2020
+import Energia2020S3 from "./Syllabus/A2020/Energia/Energia2020S3";//importancion componente Energia2020
+import Energia2020S5 from "./Syllabus/A2020/Energia/Energia2020S5";//importancion componente Energia2020
+import Energia2020S7 from "./Syllabus/A2020/Energia/Energia2020S7";//importancion componente Energia2020
+import Energia2020S9 from "./Syllabus/A2020/Energia/Energia2020S9";//importancion componente Energia2020
+
+import Bio2020 from "./Syllabus/A2020/Bio/Bio2020";//importancion componente Bio2020
+import Bio2020S3 from "./Syllabus/A2020/Bio/Bio2020S3";//importancion componente Bio2020
+import Bio2020S5 from "./Syllabus/A2020/Bio/Bio2020S5";//importancion componente Bio2020
+import Bio2020S7 from "./Syllabus/A2020/Bio/Bio2020S7";//importancion componente Bio2020
+import Bio2020S9 from "./Syllabus/A2020/Bio/Bio2020S9";//importancion componente Bio2020
+
+import Meca2020 from "./Syllabus/A2020/Meca/Meca2020";//importancion componente Meca2020
+import Meca2020S3 from "./Syllabus/A2020/Meca/Meca2020S3";//importancion componente Meca2020
+import Meca2020S5 from "./Syllabus/A2020/Meca/Meca2020S5";//importancion componente Meca2020
+import Meca2020S7 from "./Syllabus/A2020/Meca/Meca2020S7";//importancion componente Meca2020
+import Meca2020S9 from "./Syllabus/A2020/Meca/Meca2020S9";//importancion componente Meca2020
+
+import Info2020 from "./Syllabus/A2020/Info/Info2020";//importancion componente Info2020
+import Info2020S3 from "./Syllabus/A2020/Info/Info2020S3";//importancion componente Info2020
+import Info2020S5 from "./Syllabus/A2020/Info/Info2020S5";//importancion componente Info2020
+import Info2020S7 from "./Syllabus/A2020/Info/Info2020S7";//importancion componente Info2020
+import Info2020S9 from "./Syllabus/A2020/Info/Info2020S9";//importancion componente Info2020
+
+import Min2020 from "./Syllabus/A2020/Min/Min2020";//importancion componente Min2020
+import Min2020S3 from "./Syllabus/A2020/Min/Min2020S3";//importancion componente Min2020
+import Min2020S5 from "./Syllabus/A2020/Min/Min2020S5";//importancion componente Min2020
+import Min2020S7 from "./Syllabus/A2020/Min/Min2020S7";//importancion componente Min2020
+import Min2020S9 from "./Syllabus/A2020/Min/Min2020S9";//importancion componente Min2020
+
+import Obras2020 from "./Syllabus/A2020/Obras/Obras2020";//importancion componente Obras2020
+import Obras2020S3 from "./Syllabus/A2020/Obras/Obras2020S3";//importancion componente Obras2020
+import Obras2020S5 from "./Syllabus/A2020/Obras/Obras2020S5";//importancion componente Obras2020
+import Obras2020S7 from "./Syllabus/A2020/Obras/Obras2020S7";//importancion componente Obras2020
+import Obras2020S9 from "./Syllabus/A2020/Obras/Obras2020S9";//importancion componente Obras2020
+
+import Industrial2020 from "./Syllabus/A2020/Industrial/Industrial2020";//importancion componente Industrial2020
+import Industrial2020S3 from "./Syllabus/A2020/Industrial/Industrial2020S3";//importancion componente Industrial2020
+import Industrial2020S5 from "./Syllabus/A2020/Industrial/Industrial2020S5";//importancion componente Industrial2020
+import Industrial2020S7 from "./Syllabus/A2020/Industrial/Industrial2020S7";//importancion componente Industrial2020
+import Industrial2020S9 from "./Syllabus/A2020/Industrial/Industrial2020S9";//importancion componente Industrial2020
+
+import Energia2021 from "./Syllabus/A2021/Energia/Energia2021";//importancion componente Energia2021
+import Energia2021S3 from "./Syllabus/A2021/Energia/Energia2021S3";//importancion componente Energia2021
+import Energia2021S5 from "./Syllabus/A2021/Energia/Energia2021S5";//importancion componente Energia2021
+import Energia2021S7 from "./Syllabus/A2021/Energia/Energia2021S7";//importancion componente Energia2021
+import Energia2021S9 from "./Syllabus/A2021/Energia/Energia2021S9";//importancion componente Energia2021
+
+import Bio2021 from "./Syllabus/A2021/Bio/Bio2021";//importancion componente Bio2021
+import Bio2021S3 from "./Syllabus/A2021/Bio/Bio2021S3";//importancion componente Bio2021
+import Bio2021S5 from "./Syllabus/A2021/Bio/Bio2021S5";//importancion componente Bio2021
+import Bio2021S7 from "./Syllabus/A2021/Bio/Bio2021S7";//importancion componente Bio2021
+import Bio2021S9 from "./Syllabus/A2021/Bio/Bio2021S9";//importancion componente Bio2021
+
+import Meca2021 from "./Syllabus/A2021/Meca/Meca2021";//importancion componente Meca2021
+import Meca2021S3 from "./Syllabus/A2021/Meca/Meca2021S3";//importancion componente Meca2021
+import Meca2021S5 from "./Syllabus/A2021/Meca/Meca2021S5";//importancion componente Meca2021
+import Meca2021S7 from "./Syllabus/A2021/Meca/Meca2021S7";//importancion componente Meca2021
+import Meca2021S9 from "./Syllabus/A2021/Meca/Meca2021S9";//importancion componente Meca2021
+
+import Info2021 from "./Syllabus/A2021/Info/Info2021";//importancion componente Info2021
+import Info2021S3 from "./Syllabus/A2021/Info/Info2021S3";//importancion componente Info2021
+import Info2021S5 from "./Syllabus/A2021/Info/Info2021S5";//importancion componente Info2021
+import Info2021S7 from "./Syllabus/A2021/Info/Info2021S7";//importancion componente Info2021
+import Info2021S9 from "./Syllabus/A2021/Info/Info2021S9";//importancion componente Info2021
+
+import Min2021 from "./Syllabus/A2021/Min/Min2021";//importancion componente Min2021
+import Min2021S3 from "./Syllabus/A2021/Min/Min2021S3";//importancion componente Min2021
+import Min2021S5 from "./Syllabus/A2021/Min/Min2021S5";//importancion componente Min2021
+import Min2021S7 from "./Syllabus/A2021/Min/Min2021S7";//importancion componente Min2021
+import Min2021S9 from "./Syllabus/A2021/Min/Min2021S9";//importancion componente Min2021
+
+import Obras2021 from "./Syllabus/A2021/Obras/Obras2021";//importancion componente Obras2021
+import Obras2021S3 from "./Syllabus/A2021/Obras/Obras2021S3";//importancion componente Obras2021
+import Obras2021S5 from "./Syllabus/A2021/Obras/Obras2021S5";//importancion componente Obras2021
+import Obras2021S7 from "./Syllabus/A2021/Obras/Obras2021S7";//importancion componente Obras2021
+import Obras2021S9 from "./Syllabus/A2021/Obras/Obras2021S9";//importancion componente Obras2021
+
+import Industrial2021 from "./Syllabus/A2021/Industrial/Industrial2021";//importancion componente Industrial2021
+import Industrial2021S3 from "./Syllabus/A2021/Industrial/Industrial2021S3";//importancion componente Industrial2021
+import Industrial2021S5 from "./Syllabus/A2021/Industrial/Industrial2021S5";//importancion componente Industrial2021
+import Industrial2021S7 from "./Syllabus/A2021/Industrial/Industrial2021S7";//importancion componente Industrial2021
+import Industrial2021S9 from "./Syllabus/A2021/Industrial/Industrial2021S9";//importancion componente Industrial2021
+
+import Energia2022 from "./Syllabus/A2022/Energia/Energia2022";//importancion componente Energia2022
+import Energia2022S3 from "./Syllabus/A2022/Energia/Energia2022S3";//importancion componente Energia2022
+import Energia2022S5 from "./Syllabus/A2022/Energia/Energia2022S5";//importancion componente Energia2022
+import Energia2022S7 from "./Syllabus/A2022/Energia/Energia2022S7";//importancion componente Energia2022
+import Energia2022S9 from "./Syllabus/A2022/Energia/Energia2022S9";//importancion componente Energia2022
+
+import Bio2022 from "./Syllabus/A2022/Bio/Bio2022";//importancion componente Bio2022
+import Bio2022S3 from "./Syllabus/A2022/Bio/Bio2022S3";//importancion componente Bio2022
+import Bio2022S5 from "./Syllabus/A2022/Bio/Bio2022S5";//importancion componente Bio2022
+import Bio2022S7 from "./Syllabus/A2022/Bio/Bio2022S7";//importancion componente Bio2022
+import Bio2022S9 from "./Syllabus/A2022/Bio/Bio2022S9";//importancion componente Bio2022
+
+import Meca2022 from "./Syllabus/A2022/Meca/Meca2022";//importancion componente Meca2022
+import Meca2022S3 from "./Syllabus/A2022/Meca/Meca2022S3";//importancion componente Meca2022
+import Meca2022S5 from "./Syllabus/A2022/Meca/Meca2022S5";//importancion componente Meca2022
+import Meca2022S7 from "./Syllabus/A2022/Meca/Meca2022S7";//importancion componente Meca2022
+import Meca2022S9 from "./Syllabus/A2022/Meca/Meca2022S9";//importancion componente Meca2022
+
+import Info2022 from "./Syllabus/A2022/Info/Info2022";//importancion componente Info2022
+import Info2022S3 from "./Syllabus/A2022/Info/Info2022S3";//importancion componente Info2022
+import Info2022S5 from "./Syllabus/A2022/Info/Info2022S5";//importancion componente Info2022
+import Info2022S7 from "./Syllabus/A2022/Info/Info2022S7";//importancion componente Info2022
+import Info2022S9 from "./Syllabus/A2022/Info/Info2022S9";//importancion componente Info2022
+
+import Min2022 from "./Syllabus/A2022/Min/Min2022";//importancion componente Min2022
+import Min2022S3 from "./Syllabus/A2022/Min/Min2022S3";//importancion componente Min2022
+import Min2022S5 from "./Syllabus/A2022/Min/Min2022S5";//importancion componente Min2022
+import Min2022S7 from "./Syllabus/A2022/Min/Min2022S7";//importancion componente Min2022
+import Min2022S9 from "./Syllabus/A2022/Min/Min2022S9";//importancion componente Min2022
+
+import Obras2022 from "./Syllabus/A2022/Obras/Obras2022";//importancion componente Obras2022
+import Obras2022S3 from "./Syllabus/A2022/Obras/Obras2022S3";//importancion componente Obras2022
+import Obras2022S5 from "./Syllabus/A2022/Obras/Obras2022S5";//importancion componente Obras2022
+import Obras2022S7 from "./Syllabus/A2022/Obras/Obras2022S7";//importancion componente Obras2022
+import Obras2022S9 from "./Syllabus/A2022/Obras/Obras2022S9";//importancion componente Obras2022
+
+import Industrial2022 from "./Syllabus/A2022/Industrial/Industrial2022";//importancion componente Industrial2022
+import Industrial2022S3 from "./Syllabus/A2022/Industrial/Industrial2022S3";//importancion componente Industrial2022
+import Industrial2022S5 from "./Syllabus/A2022/Industrial/Industrial2022S5";//importancion componente Industrial2022
+import Industrial2022S7 from "./Syllabus/A2022/Industrial/Industrial2022S7";//importancion componente Industrial2022
+import Industrial2022S9 from "./Syllabus/A2022/Industrial/Industrial2022S9";//importancion componente Industrial2022
+
+import Energia2023 from "./Syllabus/A2023/Energia/Energia2023";//importancion componente Energia2023
+import Energia2023S3 from "./Syllabus/A2023/Energia/Energia2023S3";//importancion componente Energia2023
+import Energia2023S5 from "./Syllabus/A2023/Energia/Energia2023S5";//importancion componente Energia2023
+import Energia2023S7 from "./Syllabus/A2023/Energia/Energia2023S7";//importancion componente Energia2023
+import Energia2023S9 from "./Syllabus/A2023/Energia/Energia2023S9";//importancion componente Energia2023
+
+import Bio2023 from "./Syllabus/A2023/Bio/Bio2023";//importancion componente Bio2023
+import Bio2023S3 from "./Syllabus/A2023/Bio/Bio2023S3";//importancion componente Bio2023
+import Bio2023S5 from "./Syllabus/A2023/Bio/Bio2023S5";//importancion componente Bio2023
+import Bio2023S7 from "./Syllabus/A2023/Bio/Bio2023S7";//importancion componente Bio2023
+import Bio2023S9 from "./Syllabus/A2023/Bio/Bio2023S9";//importancion componente Bio2023
+
+import Meca2023 from "./Syllabus/A2023/Meca/Meca2023";//importancion componente Meca2023
+import Meca2023S3 from "./Syllabus/A2023/Meca/Meca2023S3";//importancion componente Meca2023
+import Meca2023S5 from "./Syllabus/A2023/Meca/Meca2023S5";//importancion componente Meca2023
+import Meca2023S7 from "./Syllabus/A2023/Meca/Meca2023S7";//importancion componente Meca2023
+import Meca2023S9 from "./Syllabus/A2023/Meca/Meca2023S9";//importancion componente Meca2023
+
+import Info2023 from "./Syllabus/A2023/Info/Info2023";//importancion componente Info2023
+import Info2023S3 from "./Syllabus/A2023/Info/Info2023S3";//importancion componente Info2023
+import Info2023S5 from "./Syllabus/A2023/Info/Info2023S5";//importancion componente Info2023
+import Info2023S7 from "./Syllabus/A2023/Info/Info2023S7";//importancion componente Info2023
+import Info2023S9 from "./Syllabus/A2023/Info/Info2023S9";//importancion componente Info2023
+
+import Min2023 from "./Syllabus/A2023/Min/Min2023";//importancion componente Min2023
+import Min2023S3 from "./Syllabus/A2023/Min/Min2023S3";//importancion componente Min2023
+import Min2023S5 from "./Syllabus/A2023/Min/Min2023S5";//importancion componente Min2023
+import Min2023S7 from "./Syllabus/A2023/Min/Min2023S7";//importancion componente Min2023
+import Min2023S9 from "./Syllabus/A2023/Min/Min2023S9";//importancion componente Min2023
+
+import Obras2023 from "./Syllabus/A2023/Obras/Obras2023";//importancion componente Obras2023
+import Obras2023S3 from "./Syllabus/A2023/Obras/Obras2023S3";//importancion componente Obras2023
+import Obras2023S5 from "./Syllabus/A2023/Obras/Obras2023S5";//importancion componente Obras2023
+import Obras2023S7 from "./Syllabus/A2023/Obras/Obras2023S7";//importancion componente Obras2023
+import Obras2023S9 from "./Syllabus/A2023/Obras/Obras2023S9";//importancion componente Obras2023
+
+import Industrial2023 from "./Syllabus/A2023/Industrial/Industrial2023";//importancion componente Industrial2023
+import Industrial2023S3 from "./Syllabus/A2023/Industrial/Industrial2023S3";//importancion componente Industrial2023
+import Industrial2023S5 from "./Syllabus/A2023/Industrial/Industrial2023S5";//importancion componente Industrial2023
+import Industrial2023S7 from "./Syllabus/A2023/Industrial/Industrial2023S7";//importancion componente Industrial2023
+import Industrial2023S9 from "./Syllabus/A2023/Industrial/Industrial2023S9";//importancion componente Industrial2023
+
+const App = () => {
+  return (
+    <div
+      className="App">
+        {/*}Renderizado componente Top{*/}
+        <Header/>{/*}Renderizado componente Header{*/}
+      <Routes>{/*}Rutas{*/}
+        <Route path="/" element={<Home />}/>
+        <Route path="/Energia2016" element={<Energia2016/>}/>{/*}Ruta para /Energia2016{*/}
+        <Route path="/Energia2016S3" element={<Energia2016S3/>}/>{/*}Ruta para /Energia2016{*/}
+        <Route path="/Energia2016S5" element={<Energia2016S5/>}/>{/*}Ruta para /Energia2016{*/}
+        <Route path="/Energia2016S7" element={<Energia2016S7/>}/>{/*}Ruta para /Energia2016{*/}
+        <Route path="/Energia2016S9" element={<Energia2016S9/>}/>{/*}Ruta para /Energia2016{*/}
+
+        <Route path="/Bio2016" element={<Bio2016/>}/>{/*}Ruta para /Bio2016{*/}
+        <Route path="/Bio2016S3" element={<Bio2016S3/>}/>{/*}Ruta para /Bio2016{*/}
+        <Route path="/Bio2016S5" element={<Bio2016S5/>}/>{/*}Ruta para /Bio2016{*/}
+        <Route path="/Bio2016S7" element={<Bio2016S7/>}/>{/*}Ruta para /Bio2016{*/}
+        <Route path="/Bio2016S9" element={<Bio2016S9/>}/>{/*}Ruta para /Bio2016{*/}
+
+        <Route path="/Meca2016" element={<Meca2016/>}/>{/*}Ruta para /Meca2016{*/}
+        <Route path="/Meca2016S3" element={<Meca2016S3/>}/>{/*}Ruta para /Meca2016{*/}
+        <Route path="/Meca2016S5" element={<Meca2016S5/>}/>{/*}Ruta para /Meca2016{*/}
+        <Route path="/Meca2016S7" element={<Meca2016S7/>}/>{/*}Ruta para /Meca2016{*/}
+        <Route path="/Meca2016S9" element={<Meca2016S9/>}/>{/*}Ruta para /Meca2016{*/}
+
+        <Route path="/Obras2016" element={<Obras2016/>}/>{/*}Ruta para /Obras2016{*/}
+        <Route path="/Obras2016S3" element={<Obras2016S3/>}/>{/*}Ruta para /Obras2016{*/}
+        <Route path="/Obras2016S5" element={<Obras2016S5/>}/>{/*}Ruta para /Obras2016{*/}
+        <Route path="/Obras2016S7" element={<Obras2016S7/>}/>{/*}Ruta para /Obras2016{*/}
+        <Route path="/Obras2016S9" element={<Obras2016S9/>}/>{/*}Ruta para /Obras2016{*/}
+
+        <Route path="/Info2016" element={<Info2016/>}/>{/*}Ruta para /Info2016{*/}
+        <Route path="/Info2016S3" element={<Info2016S3/>}/>{/*}Ruta para /Info2016{*/}
+        <Route path="/Info2016S5" element={<Info2016S5/>}/>{/*}Ruta para /Info2016{*/}
+        <Route path="/Info2016S7" element={<Info2016S7/>}/>{/*}Ruta para /Info2016{*/}
+        <Route path="/Info2016S9" element={<Info2016S9/>}/>{/*}Ruta para /Info2016{*/}
+
+        <Route path="/Min2016" element={<Min2016/>}/>{/*}Ruta para /Min2016{*/}
+        <Route path="/Min2016S3" element={<Min2016S3/>}/>{/*}Ruta para /Min2016{*/}
+        <Route path="/Min2016S5" element={<Min2016S5/>}/>{/*}Ruta para /Min2016{*/}
+        <Route path="/Min2016S7" element={<Min2016S7/>}/>{/*}Ruta para /Min2016{*/}
+        <Route path="/Min2016S9" element={<Min2016S9/>}/>{/*}Ruta para /Min2016{*/}
+
+        <Route path="/Industrial2016" element={<Industrial2016/>}/>{/*}Ruta para /Industrial2016{*/}
+        <Route path="/Industrial2016S3" element={<Industrial2016S3/>}/>{/*}Ruta para /Industrial2016{*/}
+        <Route path="/Industrial2016S5" element={<Industrial2016S5/>}/>{/*}Ruta para /Industrial2016{*/}
+        <Route path="/Industrial2016S7" element={<Industrial2016S7/>}/>{/*}Ruta para /Industrial2016{*/}
+        <Route path="/Industrial2016S9" element={<Industrial2016S9/>}/>{/*}Ruta para /Industrial2016{*/}
+
+        <Route path="/Energia2017" element={<Energia2017/>}/>{/*}Ruta para /Energia2017{*/}
+        <Route path="/Energia2017S3" element={<Energia2017S3/>}/>{/*}Ruta para /Energia2017{*/}
+        <Route path="/Energia2017S5" element={<Energia2017S5/>}/>{/*}Ruta para /Energia2017{*/}
+        <Route path="/Energia2017S7" element={<Energia2017S7/>}/>{/*}Ruta para /Energia2017{*/}
+        <Route path="/Energia2017S9" element={<Energia2017S9/>}/>{/*}Ruta para /Energia2017{*/}
+
+        <Route path="/Bio2017" element={<Bio2017/>}/>{/*}Ruta para /Bio2017{*/}
+        <Route path="/Bio2017S3" element={<Bio2017S3/>}/>{/*}Ruta para /Bio2017{*/}
+        <Route path="/Bio2017S5" element={<Bio2017S5/>}/>{/*}Ruta para /Bio2017{*/}
+        <Route path="/Bio2017S7" element={<Bio2017S7/>}/>{/*}Ruta para /Bio2017{*/}
+        <Route path="/Bio2017S9" element={<Bio2017S9/>}/>{/*}Ruta para /Bio2017{*/}
+
+        <Route path="/Meca2017" element={<Meca2017/>}/>{/*}Ruta para /Meca2017{*/}
+        <Route path="/Meca2017S3" element={<Meca2017S3/>}/>{/*}Ruta para /Meca2017{*/}
+        <Route path="/Meca2017S5" element={<Meca2017S5/>}/>{/*}Ruta para /Meca2017{*/}
+        <Route path="/Meca2017S7" element={<Meca2017S7/>}/>{/*}Ruta para /Meca2017{*/}
+        <Route path="/Meca2017S9" element={<Meca2017S9/>}/>{/*}Ruta para /Meca2017{*/}
+
+        <Route path="/Obras2017" element={<Obras2017/>}/>{/*}Ruta para /Obras2017{*/}
+        <Route path="/Obras2017S3" element={<Obras2017S3/>}/>{/*}Ruta para /Obras2017{*/}
+        <Route path="/Obras2017S5" element={<Obras2017S5/>}/>{/*}Ruta para /Obras2017{*/}
+        <Route path="/Obras2017S7" element={<Obras2017S7/>}/>{/*}Ruta para /Obras2017{*/}
+        <Route path="/Obras2017S9" element={<Obras2017S9/>}/>{/*}Ruta para /Obras2017{*/}
+
+        <Route path="/Info2017" element={<Info2017/>}/>{/*}Ruta para /Info2017{*/}
+        <Route path="/Info2017S3" element={<Info2017S3/>}/>{/*}Ruta para /Info2017{*/}
+        <Route path="/Info2017S5" element={<Info2017S5/>}/>{/*}Ruta para /Info2017{*/}
+        <Route path="/Info2017S7" element={<Info2017S7/>}/>{/*}Ruta para /Info2017{*/}
+        <Route path="/Info2017S9" element={<Info2017S9/>}/>{/*}Ruta para /Info2017{*/}
+
+        <Route path="/Min2017" element={<Min2017/>}/>{/*}Ruta para /Min2017{*/}
+        <Route path="/Min2017S3" element={<Min2017S3/>}/>{/*}Ruta para /Min2017{*/}
+        <Route path="/Min2017S5" element={<Min2017S5/>}/>{/*}Ruta para /Min2017{*/}
+        <Route path="/Min2017S7" element={<Min2017S7/>}/>{/*}Ruta para /Min2017{*/}
+        <Route path="/Min2017S9" element={<Min2017S9/>}/>{/*}Ruta para /Min2017{*/}
+
+        <Route path="/Industrial2017" element={<Industrial2017/>}/>{/*}Ruta para /Industrial2017{*/}
+        <Route path="/Industrial2017S3" element={<Industrial2017S3/>}/>{/*}Ruta para /Industrial2017{*/}
+        <Route path="/Industrial2017S5" element={<Industrial2017S5/>}/>{/*}Ruta para /Industrial2017{*/}
+        <Route path="/Industrial2017S7" element={<Industrial2017S7/>}/>{/*}Ruta para /Industrial2017{*/}
+        <Route path="/Industrial2017S9" element={<Industrial2017S9/>}/>{/*}Ruta para /Industrial2017{*/}
+
+        <Route path="/Energia2018" element={<Energia2018/>}/>{/*}Ruta para /Energia2018{*/}
+        <Route path="/Energia2018S3" element={<Energia2018S3/>}/>{/*}Ruta para /Energia2018{*/}
+        <Route path="/Energia2018S5" element={<Energia2018S5/>}/>{/*}Ruta para /Energia2018{*/}
+        <Route path="/Energia2018S7" element={<Energia2018S7/>}/>{/*}Ruta para /Energia2018{*/}
+        <Route path="/Energia2018S9" element={<Energia2018S9/>}/>{/*}Ruta para /Energia2018{*/}
+
+        <Route path="/Bio2018" element={<Bio2018/>}/>{/*}Ruta para /Bio2018{*/}
+        <Route path="/Bio2018S3" element={<Bio2018S3/>}/>{/*}Ruta para /Bio2018{*/}
+        <Route path="/Bio2018S5" element={<Bio2018S5/>}/>{/*}Ruta para /Bio2018{*/}
+        <Route path="/Bio2018S7" element={<Bio2018S7/>}/>{/*}Ruta para /Bio2018{*/}
+        <Route path="/Bio2018S9" element={<Bio2018S9/>}/>{/*}Ruta para /Bio2018{*/}
+
+        <Route path="/Meca2018" element={<Meca2018/>}/>{/*}Ruta para /Meca2018{*/}
+        <Route path="/Meca2018S3" element={<Meca2018S3/>}/>{/*}Ruta para /Meca2018{*/}
+        <Route path="/Meca2018S5" element={<Meca2018S5/>}/>{/*}Ruta para /Meca2018{*/}
+        <Route path="/Meca2018S7" element={<Meca2018S7/>}/>{/*}Ruta para /Meca2018{*/}
+        <Route path="/Meca2018S9" element={<Meca2018S9/>}/>{/*}Ruta para /Meca2018{*/}
+
+        <Route path="/Obras2018" element={<Obras2018/>}/>{/*}Ruta para /Obras2018{*/}
+        <Route path="/Obras2018S3" element={<Obras2018S3/>}/>{/*}Ruta para /Obras2018{*/}
+        <Route path="/Obras2018S5" element={<Obras2018S5/>}/>{/*}Ruta para /Obras2018{*/}
+        <Route path="/Obras2018S7" element={<Obras2018S7/>}/>{/*}Ruta para /Obras2018{*/}
+        <Route path="/Obras2018S9" element={<Obras2018S9/>}/>{/*}Ruta para /Obras2018{*/}
+
+        <Route path="/Info2018" element={<Info2018/>}/>{/*}Ruta para /Info2018{*/}
+        <Route path="/Info2018S3" element={<Info2018S3/>}/>{/*}Ruta para /Info2018{*/}
+        <Route path="/Info2018S5" element={<Info2018S5/>}/>{/*}Ruta para /Info2018{*/}
+        <Route path="/Info2018S7" element={<Info2018S7/>}/>{/*}Ruta para /Info2018{*/}
+        <Route path="/Info2018S9" element={<Info2018S9/>}/>{/*}Ruta para /Info2018{*/}
+
+        <Route path="/Min2018" element={<Min2018/>}/>{/*}Ruta para /Min2018{*/}
+        <Route path="/Min2018S3" element={<Min2018S3/>}/>{/*}Ruta para /Min2018{*/}
+        <Route path="/Min2018S5" element={<Min2018S5/>}/>{/*}Ruta para /Min2018{*/}
+        <Route path="/Min2018S7" element={<Min2018S7/>}/>{/*}Ruta para /Min2018{*/}
+        <Route path="/Min2018S9" element={<Min2018S9/>}/>{/*}Ruta para /Min2018{*/}
+
+        <Route path="/Industrial2018" element={<Industrial2018/>}/>{/*}Ruta para /Industrial2018{*/}
+        <Route path="/Industrial2018S3" element={<Industrial2018S3/>}/>{/*}Ruta para /Industrial2018{*/}
+        <Route path="/Industrial2018S5" element={<Industrial2018S5/>}/>{/*}Ruta para /Industrial2018{*/}
+        <Route path="/Industrial2018S7" element={<Industrial2018S7/>}/>{/*}Ruta para /Industrial2018{*/}
+        <Route path="/Industrial2018S9" element={<Industrial2018S9/>}/>{/*}Ruta para /Industrial2018{*/}
+
+        <Route path="/Energia2019" element={<Energia2019/>}/>{/*}Ruta para /Energia2019{*/}
+        <Route path="/Energia2019S3" element={<Energia2019S3/>}/>{/*}Ruta para /Energia2019{*/}
+        <Route path="/Energia2019S5" element={<Energia2019S5/>}/>{/*}Ruta para /Energia2019{*/}
+        <Route path="/Energia2019S7" element={<Energia2019S7/>}/>{/*}Ruta para /Energia2019{*/}
+        <Route path="/Energia2019S9" element={<Energia2019S9/>}/>{/*}Ruta para /Energia2019{*/}
+
+        <Route path="/Bio2019" element={<Bio2019/>}/>{/*}Ruta para /Bio2019{*/}
+        <Route path="/Bio2019S3" element={<Bio2019S3/>}/>{/*}Ruta para /Bio2019{*/}
+        <Route path="/Bio2019S5" element={<Bio2019S5/>}/>{/*}Ruta para /Bio2019{*/}
+        <Route path="/Bio2019S7" element={<Bio2019S7/>}/>{/*}Ruta para /Bio2019{*/}
+        <Route path="/Bio2019S9" element={<Bio2019S9/>}/>{/*}Ruta para /Bio2019{*/}
+
+        <Route path="/Meca2019" element={<Meca2019/>}/>{/*}Ruta para /Meca2019{*/}
+        <Route path="/Meca2019S3" element={<Meca2019S3/>}/>{/*}Ruta para /Meca2019{*/}
+        <Route path="/Meca2019S5" element={<Meca2019S5/>}/>{/*}Ruta para /Meca2019{*/}
+        <Route path="/Meca2019S7" element={<Meca2019S7/>}/>{/*}Ruta para /Meca2019{*/}
+        <Route path="/Meca2019S9" element={<Meca2019S9/>}/>{/*}Ruta para /Meca2019{*/}
+
+        <Route path="/Obras2019" element={<Obras2019/>}/>{/*}Ruta para /Obras2019{*/}
+        <Route path="/Obras2019S3" element={<Obras2019S3/>}/>{/*}Ruta para /Obras2019{*/}
+        <Route path="/Obras2019S5" element={<Obras2019S5/>}/>{/*}Ruta para /Obras2019{*/}
+        <Route path="/Obras2019S7" element={<Obras2019S7/>}/>{/*}Ruta para /Obras2019{*/}
+        <Route path="/Obras2019S9" element={<Obras2019S9/>}/>{/*}Ruta para /Obras2019{*/}
+
+        <Route path="/Info2019" element={<Info2019/>}/>{/*}Ruta para /Info2019{*/}
+        <Route path="/Info2019S3" element={<Info2019S3/>}/>{/*}Ruta para /Info2019{*/}
+        <Route path="/Info2019S5" element={<Info2019S5/>}/>{/*}Ruta para /Info2019{*/}
+        <Route path="/Info2019S7" element={<Info2019S7/>}/>{/*}Ruta para /Info2019{*/}
+        <Route path="/Info2019S9" element={<Info2019S9/>}/>{/*}Ruta para /Info2019{*/}
+
+        <Route path="/Min2019" element={<Min2019/>}/>{/*}Ruta para /Min2019{*/}
+        <Route path="/Min2019S3" element={<Min2019S3/>}/>{/*}Ruta para /Min2019{*/}
+        <Route path="/Min2019S5" element={<Min2019S5/>}/>{/*}Ruta para /Min2019{*/}
+        <Route path="/Min2019S7" element={<Min2019S7/>}/>{/*}Ruta para /Min2019{*/}
+        <Route path="/Min2019S9" element={<Min2019S9/>}/>{/*}Ruta para /Min2019{*/}
+
+        <Route path="/Industrial2019" element={<Industrial2019/>}/>{/*}Ruta para /Industrial2019{*/}
+        <Route path="/Industrial2019S3" element={<Industrial2019S3/>}/>{/*}Ruta para /Industrial2019{*/}
+        <Route path="/Industrial2019S5" element={<Industrial2019S5/>}/>{/*}Ruta para /Industrial2019{*/}
+        <Route path="/Industrial2019S7" element={<Industrial2019S7/>}/>{/*}Ruta para /Industrial2019{*/}
+        <Route path="/Industrial2019S9" element={<Industrial2019S9/>}/>{/*}Ruta para /Industrial2019{*/}
+
+        <Route path="/Energia2020" element={<Energia2020/>}/>{/*}Ruta para /Energia2020{*/}
+        <Route path="/Energia2020S3" element={<Energia2020S3/>}/>{/*}Ruta para /Energia2020{*/}
+        <Route path="/Energia2020S5" element={<Energia2020S5/>}/>{/*}Ruta para /Energia2020{*/}
+        <Route path="/Energia2020S7" element={<Energia2020S7/>}/>{/*}Ruta para /Energia2020{*/}
+        <Route path="/Energia2020S9" element={<Energia2020S9/>}/>{/*}Ruta para /Energia2020{*/}
+
+        <Route path="/Bio2020" element={<Bio2020/>}/>{/*}Ruta para /Bio2020{*/}
+        <Route path="/Bio2020S3" element={<Bio2020S3/>}/>{/*}Ruta para /Bio2020{*/}
+        <Route path="/Bio2020S5" element={<Bio2020S5/>}/>{/*}Ruta para /Bio2020{*/}
+        <Route path="/Bio2020S7" element={<Bio2020S7/>}/>{/*}Ruta para /Bio2020{*/}
+        <Route path="/Bio2020S9" element={<Bio2020S9/>}/>{/*}Ruta para /Bio2020{*/}
+
+        <Route path="/Meca2020" element={<Meca2020/>}/>{/*}Ruta para /Meca2020{*/}
+        <Route path="/Meca2020S3" element={<Meca2020S3/>}/>{/*}Ruta para /Meca2020{*/}
+        <Route path="/Meca2020S5" element={<Meca2020S5/>}/>{/*}Ruta para /Meca2020{*/}
+        <Route path="/Meca2020S7" element={<Meca2020S7/>}/>{/*}Ruta para /Meca2020{*/}
+        <Route path="/Meca2020S9" element={<Meca2020S9/>}/>{/*}Ruta para /Meca2020{*/}
+
+        <Route path="/Obras2020" element={<Obras2020/>}/>{/*}Ruta para /Obras2020{*/}
+        <Route path="/Obras2020S3" element={<Obras2020S3/>}/>{/*}Ruta para /Obras2020{*/}
+        <Route path="/Obras2020S5" element={<Obras2020S5/>}/>{/*}Ruta para /Obras2020{*/}
+        <Route path="/Obras2020S7" element={<Obras2020S7/>}/>{/*}Ruta para /Obras2020{*/}
+        <Route path="/Obras2020S9" element={<Obras2020S9/>}/>{/*}Ruta para /Obras2020{*/}
+
+        <Route path="/Info2020" element={<Info2020/>}/>{/*}Ruta para /Info2020{*/}
+        <Route path="/Info2020S3" element={<Info2020S3/>}/>{/*}Ruta para /Info2020{*/}
+        <Route path="/Info2020S5" element={<Info2020S5/>}/>{/*}Ruta para /Info2020{*/}
+        <Route path="/Info2020S7" element={<Info2020S7/>}/>{/*}Ruta para /Info2020{*/}
+        <Route path="/Info2020S9" element={<Info2020S9/>}/>{/*}Ruta para /Info2020{*/}
+
+        <Route path="/Min2020" element={<Min2020/>}/>{/*}Ruta para /Min2020{*/}
+        <Route path="/Min2020S3" element={<Min2020S3/>}/>{/*}Ruta para /Min2020{*/}
+        <Route path="/Min2020S5" element={<Min2020S5/>}/>{/*}Ruta para /Min2020{*/}
+        <Route path="/Min2020S7" element={<Min2020S7/>}/>{/*}Ruta para /Min2020{*/}
+        <Route path="/Min2020S9" element={<Min2020S9/>}/>{/*}Ruta para /Min2020{*/}
+
+        <Route path="/Industrial2020" element={<Industrial2020/>}/>{/*}Ruta para /Industrial2020{*/}
+        <Route path="/Industrial2020S3" element={<Industrial2020S3/>}/>{/*}Ruta para /Industrial2020{*/}
+        <Route path="/Industrial2020S5" element={<Industrial2020S5/>}/>{/*}Ruta para /Industrial2020{*/}
+        <Route path="/Industrial2020S7" element={<Industrial2020S7/>}/>{/*}Ruta para /Industrial2020{*/}
+        <Route path="/Industrial2020S9" element={<Industrial2020S9/>}/>{/*}Ruta para /Industrial2020{*/}
+
+        <Route path="/Energia2021" element={<Energia2021/>}/>{/*}Ruta para /Energia2021{*/}
+        <Route path="/Energia2021S3" element={<Energia2021S3/>}/>{/*}Ruta para /Energia2021{*/}
+        <Route path="/Energia2021S5" element={<Energia2021S5/>}/>{/*}Ruta para /Energia2021{*/}
+        <Route path="/Energia2021S7" element={<Energia2021S7/>}/>{/*}Ruta para /Energia2021{*/}
+        <Route path="/Energia2021S9" element={<Energia2021S9/>}/>{/*}Ruta para /Energia2021{*/}
+
+        <Route path="/Bio2021" element={<Bio2021/>}/>{/*}Ruta para /Bio2021{*/}
+        <Route path="/Bio2021S3" element={<Bio2021S3/>}/>{/*}Ruta para /Bio2021{*/}
+        <Route path="/Bio2021S5" element={<Bio2021S5/>}/>{/*}Ruta para /Bio2021{*/}
+        <Route path="/Bio2021S7" element={<Bio2021S7/>}/>{/*}Ruta para /Bio2021{*/}
+        <Route path="/Bio2021S9" element={<Bio2021S9/>}/>{/*}Ruta para /Bio2021{*/}
+
+        <Route path="/Meca2021" element={<Meca2021/>}/>{/*}Ruta para /Meca2021{*/}
+        <Route path="/Meca2021S3" element={<Meca2021S3/>}/>{/*}Ruta para /Meca2021{*/}
+        <Route path="/Meca2021S5" element={<Meca2021S5/>}/>{/*}Ruta para /Meca2021{*/}
+        <Route path="/Meca2021S7" element={<Meca2021S7/>}/>{/*}Ruta para /Meca2021{*/}
+        <Route path="/Meca2021S9" element={<Meca2021S9/>}/>{/*}Ruta para /Meca2021{*/}
+
+        <Route path="/Obras2021" element={<Obras2021/>}/>{/*}Ruta para /Obras2021{*/}
+        <Route path="/Obras2021S3" element={<Obras2021S3/>}/>{/*}Ruta para /Obras2021{*/}
+        <Route path="/Obras2021S5" element={<Obras2021S5/>}/>{/*}Ruta para /Obras2021{*/}
+        <Route path="/Obras2021S7" element={<Obras2021S7/>}/>{/*}Ruta para /Obras2021{*/}
+        <Route path="/Obras2021S9" element={<Obras2021S9/>}/>{/*}Ruta para /Obras2021{*/}
+
+        <Route path="/Info2021" element={<Info2021/>}/>{/*}Ruta para /Info2021{*/}
+        <Route path="/Info2021S3" element={<Info2021S3/>}/>{/*}Ruta para /Info2021{*/}
+        <Route path="/Info2021S5" element={<Info2021S5/>}/>{/*}Ruta para /Info2021{*/}
+        <Route path="/Info2021S7" element={<Info2021S7/>}/>{/*}Ruta para /Info2021{*/}
+        <Route path="/Info2021S9" element={<Info2021S9/>}/>{/*}Ruta para /Info2021{*/}
+
+        <Route path="/Min2021" element={<Min2021/>}/>{/*}Ruta para /Min2021{*/}
+        <Route path="/Min2021S3" element={<Min2021S3/>}/>{/*}Ruta para /Min2021{*/}
+        <Route path="/Min2021S5" element={<Min2021S5/>}/>{/*}Ruta para /Min2021{*/}
+        <Route path="/Min2021S7" element={<Min2021S7/>}/>{/*}Ruta para /Min2021{*/}
+        <Route path="/Min2021S9" element={<Min2021S9/>}/>{/*}Ruta para /Min2021{*/}
+
+        <Route path="/Industrial2021" element={<Industrial2021/>}/>{/*}Ruta para /Industrial2021{*/}
+        <Route path="/Industrial2021S3" element={<Industrial2021S3/>}/>{/*}Ruta para /Industrial2021{*/}
+        <Route path="/Industrial2021S5" element={<Industrial2021S5/>}/>{/*}Ruta para /Industrial2021{*/}
+        <Route path="/Industrial2021S7" element={<Industrial2021S7/>}/>{/*}Ruta para /Industrial2021{*/}
+        <Route path="/Industrial2021S9" element={<Industrial2021S9/>}/>{/*}Ruta para /Industrial2021{*/}
+
+        <Route path="/Energia2022" element={<Energia2022/>}/>{/*}Ruta para /Energia2022{*/}
+        <Route path="/Energia2022S3" element={<Energia2022S3/>}/>{/*}Ruta para /Energia2022{*/}
+        <Route path="/Energia2022S5" element={<Energia2022S5/>}/>{/*}Ruta para /Energia2022{*/}
+        <Route path="/Energia2022S7" element={<Energia2022S7/>}/>{/*}Ruta para /Energia2022{*/}
+        <Route path="/Energia2022S9" element={<Energia2022S9/>}/>{/*}Ruta para /Energia2022{*/}
+
+        <Route path="/Bio2022" element={<Bio2022/>}/>{/*}Ruta para /Bio2022{*/}
+        <Route path="/Bio2022S3" element={<Bio2022S3/>}/>{/*}Ruta para /Bio2022{*/}
+        <Route path="/Bio2022S5" element={<Bio2022S5/>}/>{/*}Ruta para /Bio2022{*/}
+        <Route path="/Bio2022S7" element={<Bio2022S7/>}/>{/*}Ruta para /Bio2022{*/}
+        <Route path="/Bio2022S9" element={<Bio2022S9/>}/>{/*}Ruta para /Bio2022{*/}
+
+        <Route path="/Meca2022" element={<Meca2022/>}/>{/*}Ruta para /Meca2022{*/}
+        <Route path="/Meca2022S3" element={<Meca2022S3/>}/>{/*}Ruta para /Meca2022{*/}
+        <Route path="/Meca2022S5" element={<Meca2022S5/>}/>{/*}Ruta para /Meca2022{*/}
+        <Route path="/Meca2022S7" element={<Meca2022S7/>}/>{/*}Ruta para /Meca2022{*/}
+        <Route path="/Meca2022S9" element={<Meca2022S9/>}/>{/*}Ruta para /Meca2022{*/}
+
+        <Route path="/Obras2022" element={<Obras2022/>}/>{/*}Ruta para /Obras2022{*/}
+        <Route path="/Obras2022S3" element={<Obras2022S3/>}/>{/*}Ruta para /Obras2022{*/}
+        <Route path="/Obras2022S5" element={<Obras2022S5/>}/>{/*}Ruta para /Obras2022{*/}
+        <Route path="/Obras2022S7" element={<Obras2022S7/>}/>{/*}Ruta para /Obras2022{*/}
+        <Route path="/Obras2022S9" element={<Obras2022S9/>}/>{/*}Ruta para /Obras2022{*/}
+
+        <Route path="/Info2022" element={<Info2022/>}/>{/*}Ruta para /Info2022{*/}
+        <Route path="/Info2022S3" element={<Info2022S3/>}/>{/*}Ruta para /Info2022{*/}
+        <Route path="/Info2022S5" element={<Info2022S5/>}/>{/*}Ruta para /Info2022{*/}
+        <Route path="/Info2022S7" element={<Info2022S7/>}/>{/*}Ruta para /Info2022{*/}
+        <Route path="/Info2022S9" element={<Info2022S9/>}/>{/*}Ruta para /Info2022{*/}
+
+        <Route path="/Min2022" element={<Min2022/>}/>{/*}Ruta para /Min2022{*/}
+        <Route path="/Min2022S3" element={<Min2022S3/>}/>{/*}Ruta para /Min2022{*/}
+        <Route path="/Min2022S5" element={<Min2022S5/>}/>{/*}Ruta para /Min2022{*/}
+        <Route path="/Min2022S7" element={<Min2022S7/>}/>{/*}Ruta para /Min2022{*/}
+        <Route path="/Min2022S9" element={<Min2022S9/>}/>{/*}Ruta para /Min2022{*/}
+
+        <Route path="/Industrial2022" element={<Industrial2022/>}/>{/*}Ruta para /Industrial2022{*/}
+        <Route path="/Industrial2022S3" element={<Industrial2022S3/>}/>{/*}Ruta para /Industrial2022{*/}
+        <Route path="/Industrial2022S5" element={<Industrial2022S5/>}/>{/*}Ruta para /Industrial2022{*/}
+        <Route path="/Industrial2022S7" element={<Industrial2022S7/>}/>{/*}Ruta para /Industrial2022{*/}
+        <Route path="/Industrial2022S9" element={<Industrial2022S9/>}/>{/*}Ruta para /Industrial2022{*/}
+
+        <Route path="/Energia2023" element={<Energia2023/>}/>{/*}Ruta para /Energia2023{*/}
+        <Route path="/Energia2023S3" element={<Energia2023S3/>}/>{/*}Ruta para /Energia2023{*/}
+        <Route path="/Energia2023S5" element={<Energia2023S5/>}/>{/*}Ruta para /Energia2023{*/}
+        <Route path="/Energia2023S7" element={<Energia2023S7/>}/>{/*}Ruta para /Energia2023{*/}
+        <Route path="/Energia2023S9" element={<Energia2023S9/>}/>{/*}Ruta para /Energia2023{*/}
+
+        <Route path="/Bio2023" element={<Bio2023/>}/>{/*}Ruta para /Bio2023{*/}
+        <Route path="/Bio2023S3" element={<Bio2023S3/>}/>{/*}Ruta para /Bio2023{*/}
+        <Route path="/Bio2023S5" element={<Bio2023S5/>}/>{/*}Ruta para /Bio2023{*/}
+        <Route path="/Bio2023S7" element={<Bio2023S7/>}/>{/*}Ruta para /Bio2023{*/}
+        <Route path="/Bio2023S9" element={<Bio2023S9/>}/>{/*}Ruta para /Bio2023{*/}
+
+        <Route path="/Meca2023" element={<Meca2023/>}/>{/*}Ruta para /Meca2023{*/}
+        <Route path="/Meca2023S3" element={<Meca2023S3/>}/>{/*}Ruta para /Meca2023{*/}
+        <Route path="/Meca2023S5" element={<Meca2023S5/>}/>{/*}Ruta para /Meca2023{*/}
+        <Route path="/Meca2023S7" element={<Meca2023S7/>}/>{/*}Ruta para /Meca2023{*/}
+        <Route path="/Meca2023S9" element={<Meca2023S9/>}/>{/*}Ruta para /Meca2023{*/}
+
+        <Route path="/Obras2023" element={<Obras2023/>}/>{/*}Ruta para /Obras2023{*/}
+        <Route path="/Obras2023S3" element={<Obras2023S3/>}/>{/*}Ruta para /Obras2023{*/}
+        <Route path="/Obras2023S5" element={<Obras2023S5/>}/>{/*}Ruta para /Obras2023{*/}
+        <Route path="/Obras2023S7" element={<Obras2023S7/>}/>{/*}Ruta para /Obras2023{*/}
+        <Route path="/Obras2023S9" element={<Obras2023S9/>}/>{/*}Ruta para /Obras2023{*/}
+
+        <Route path="/Info2023" element={<Info2023/>}/>{/*}Ruta para /Info2023{*/}
+        <Route path="/Info2023S3" element={<Info2023S3/>}/>{/*}Ruta para /Info2023{*/}
+        <Route path="/Info2023S5" element={<Info2023S5/>}/>{/*}Ruta para /Info2023{*/}
+        <Route path="/Info2023S7" element={<Info2023S7/>}/>{/*}Ruta para /Info2023{*/}
+        <Route path="/Info2023S9" element={<Info2023S9/>}/>{/*}Ruta para /Info2023{*/}
+
+        <Route path="/Min2023" element={<Min2023/>}/>{/*}Ruta para /Min2023{*/}
+        <Route path="/Min2023S3" element={<Min2023S3/>}/>{/*}Ruta para /Min2023{*/}
+        <Route path="/Min2023S5" element={<Min2023S5/>}/>{/*}Ruta para /Min2023{*/}
+        <Route path="/Min2023S7" element={<Min2023S7/>}/>{/*}Ruta para /Min2023{*/}
+        <Route path="/Min2023S9" element={<Min2023S9/>}/>{/*}Ruta para /Min2023{*/}
+
+        <Route path="/Industrial2023" element={<Industrial2023/>}/>{/*}Ruta para /Industrial2023{*/}
+        <Route path="/Industrial2023S3" element={<Industrial2023S3/>}/>{/*}Ruta para /Industrial2023{*/}
+        <Route path="/Industrial2023S5" element={<Industrial2023S5/>}/>{/*}Ruta para /Industrial2023{*/}
+        <Route path="/Industrial2023S7" element={<Industrial2023S7/>}/>{/*}Ruta para /Industrial2023{*/}
+        <Route path="/Industrial2023S9" element={<Industrial2023S9/>}/>{/*}Ruta para /Industrial2023{*/}
