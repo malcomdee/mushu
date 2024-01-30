@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..\static\css\inicio.css">
+
+    <title>Inicio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@900&family=Indie+Flower&family=Yanone+Kaffeesatz:wght@200&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@200&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300&display=swap" rel="stylesheet">
+    
+</head>
+
+<body>
+    <div class="imagen">
+        <img src="../static/css/assets/cita1.jpeg" alt="Cita 1">
+    </div>
+
+    <div class="texto">
+        <h1 class="agus"> AGUS Y</h1>
+        <h1 class="lucas">LUCAS</h1>
+        <p>NOVIEMBRE 7, 2021</p>
+
+        <button class="btn1" onclick="redirigirAHistoria()">QUE COMIENCE LA HISTORIA</button>
+        <button class="btn2" onclick="redirigirALista()">TO DO LIST</button>
+        <button class="btn3" onclick="redirigirAMensaje()">YOUR MESSAGE</button>
+    </div>
+
+    <script>
+        function redirigirAHistoria() {
+            window.location.href = "historia.html";
+        }
+
+        function redirigirALista() {
+            window.location.href = "lista.html";
+        }
+
+        function redirigirAMensaje() {
+            window.location.href = "mensaje.html";
+        }
+    </script>
+</body>
+</html>

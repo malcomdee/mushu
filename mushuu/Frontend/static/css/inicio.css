@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+}
+
+.imagen {
+    flex: 2; /* Hace que la imagen ocupe más de la mitad del contenedor */
+    display: flex;
+    align-items: center;
+    width: 80%;
+}
+
+.imagen img {
+    width: 90%; /* Utiliza 100% para ocupar el 100% del contenedor */
+    height: auto;
+    max-width: 90%; /* Ajustado para ocupar más espacio */
+    filter: grayscale(100%) brightness(60%);
+}
+
+.texto {
+    font-family: 'Fira Sans Extra Condensed', sans-serif;    flex: 1;
+    margin-left: 8px; 
+    margin-bottom: 150px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+br {
+    margin-bottom: -5px;
+}
+
+.texto h1 {
+    font-size: 65px;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+    font-stretch: 1px expanded;
+    text-align: left; 
+
+}
+
+.texto .agus {
+    margin-bottom: -10px; /* Ajusta el valor según desees */
+}
+
+.texto p {
+    font-family: 'Yanone Kaffeesatz', sans-serif;    
+    font-style: normal;
+    font-size: 17px;
+    color:  #1d9fce;
+    letter-spacing: 1px;
+    text-align: left; /* Alinea el texto a la izquierda */
+    margin-bottom: 20px;
+}
+
+.btn1, .btn2, .btn3 {
+    font-family: 'DM Sans', sans-serif;    
+    font-size: solid black;
+    font-weight: bold; /* Ajusta el valor según desees */
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    height: 30px;
+    width: 240px;
+    letter-spacing: 1px;
+    transition: 0.3s linear;
+    cursor: pointer;
+    font-size: 11px;
+    background-color: white;
+    border: 1px solid #000; /* Ajusta el grosor del borde y el color según tus preferencias */
+}
+
+button:hover {
+    background: linear-gradient(to right, #8f9fae, #1d9fce);
+    color: 10px solid black;
+}

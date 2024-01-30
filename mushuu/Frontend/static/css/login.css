@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background: url("../css/assets/fondo1.png") no-repeat center center fixed;
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    margin: 0;
+}
+
+.imagen1,
+.imagen2 {
+    position: absolute;
+}
+
+.imagen1 {
+    left: 0;
+}
+
+.imagen2 {
+    right: 0;
+}
+
+.imagen1 img,
+.imagen2 img {
+    filter: grayscale(100%) opacity(70%);
+    width: 200px;
+    height: 780px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 150px; /* Ajusta el ancho del formulario según tus necesidades */
+    max-width: 150px; /* Ancho máximo del formulario */
+    margin-top: 85px;
+    margin-right: 75px;    
+    padding: 15px;
+    z-index: 1;
+    color: #000000;
+}
+
+form label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+form label .fa-solid {
+    font-size: 14px;
+    color: #8f9fae;
+    margin-right: 8px;
+}
+
+form label input {
+    outline: none;
+    border: none;
+    color: #000000;
+    border-bottom: solid 1px #1d9fce;
+    padding: 7px;
+    font-size: 12px;
+    flex-grow: 1;
+    background: transparent;
+}
+
+form label input::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+form .link {
+    font-size: 10px;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+form button {
+    display: flex;
+    font-size: 14px;
+    color: #fff;
+    border: none;
+    margin-top: 12px;
+    margin-left: 65px;
+    background: linear-gradient(to right, #8f9fae, #1d9fce);
+    padding: 8px 12px;
+    cursor: pointer;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
